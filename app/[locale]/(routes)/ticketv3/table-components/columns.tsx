@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import moment from "moment";
 import Link from "next/link";
 import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
+// import { DataTableRowActions } from "./data-table-row-actions";
 
 // Assuming you have a type or interface for User
 import { User } from "../data/schema";
@@ -138,8 +138,8 @@ export const columns: ColumnDef<User>[] = [
     enableSorting: true,
     enableHiding: true,
   },
-  {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
-  },
+  // {
+  //   id: "actions",
+  //   cell: ({ row }) => <DataTableRowActions row={row} />,
+  // },
 ];
