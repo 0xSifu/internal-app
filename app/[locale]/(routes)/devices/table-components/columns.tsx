@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { Task } from "../data/schema";  // Adjust the import path if necessary
 import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
+// import { DataTableRowActions } from "./data-table-row-actions";
 import Link from "next/link";
 
 export const columns: ColumnDef<Task>[] = [
@@ -77,8 +77,8 @@ export const columns: ColumnDef<Task>[] = [
     enableSorting: true,
     enableHiding: false,
   },
-  {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
-  },
+  // {
+  //   id: "actions",
+  //   cell: ({ row }) => <DataTableRowActions row={row} />,
+  // },
 ];
