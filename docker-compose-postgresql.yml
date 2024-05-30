@@ -1,14 +1,25 @@
-version: '3.8'
+version: '3.5'
 
 services:
-  db:
-    image: postgres:latest
-    restart: always
+  postgres:
+    container_name: postgres_container
+    image: postgres
     environment:
       POSTGRES_DB: internal
       POSTGRES_USER: root
       POSTGRES_PASSWORD: devabdul123
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
     ports:
       - "5432:5432"
-    volumes:
-      - ./data:/var/lib/postgresql/data
+    networks:
+      - postgres
+    restart: unless-stopped
+  
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:

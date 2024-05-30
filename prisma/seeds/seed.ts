@@ -31,63 +31,63 @@ async function main() {
     console.log("Modules already seeded");
   }
 
-  // //Seed CRM Opportunity Types
-  // const crmOpportunityType = await prisma.crm_Opportunities_Type.findMany();
+  //Seed CRM Opportunity Types
+  const crmOpportunityType = await prisma.crm_Opportunities_Type.findMany();
 
-  // if (crmOpportunityType.length === 0) {
-  //   await prisma.crm_Opportunities_Type.createMany({
-  //     data: crmOpportunityTypeData,
-  //   });
-  //   console.log("Opportunity Types seeded successfully");
-  // } else {
-  //   console.log("Opportunity Types already seeded");
-  // }
+  if (crmOpportunityType.length === 0) {
+    await prisma.crm_Opportunities_Type.createMany({
+      data: crmOpportunityTypeData,
+    });
+    console.log("Opportunity Types seeded successfully");
+  } else {
+    console.log("Opportunity Types already seeded");
+  }
 
-  // const crmOpportunitySaleStages =
-  //   await prisma.crm_Opportunities_Sales_Stages.findMany();
+  const crmOpportunitySaleStages =
+    await prisma.crm_Opportunities_Sales_Stages.findMany();
 
-  // if (crmOpportunitySaleStages.length === 0) {
-  //   await prisma.crm_Opportunities_Sales_Stages.createMany({
-  //     data: crmOpportunitySaleStagesData,
-  //   });
-  //   console.log("Opportunity Sales Stages seeded successfully");
-  // } else {
-  //   console.log("Opportunity Sales Stages already seeded");
-  // }
+  if (crmOpportunitySaleStages.length === 0) {
+    await prisma.crm_Opportunities_Sales_Stages.createMany({
+      data: crmOpportunitySaleStagesData,
+    });
+    console.log("Opportunity Sales Stages seeded successfully");
+  } else {
+    console.log("Opportunity Sales Stages already seeded");
+  }
 
-  // const crmCampaigns = await prisma.crm_campaigns.findMany();
+  const crmCampaigns = await prisma.crm_campaigns.findMany();
 
-  // if (crmCampaigns.length === 0) {
-  //   await prisma.crm_campaigns.createMany({
-  //     data: crmCampaignsData,
-  //   });
-  //   console.log("Campaigns seeded successfully");
-  // } else {
-  //   console.log("Campaigns already seeded");
-  // }
+  if (crmCampaigns.length === 0) {
+    await prisma.crm_campaigns.createMany({
+      data: crmCampaignsData,
+    });
+    console.log("Campaigns seeded successfully");
+  } else {
+    console.log("Campaigns already seeded");
+  }
 
-  // const crmIndustryType = await prisma.crm_Industry_Type.findMany();
+  const crmIndustryType = await prisma.crm_Industry_Type.findMany();
 
-  // if (crmIndustryType.length === 0) {
-  //   await prisma.crm_Industry_Type.createMany({
-  //     data: crmIndustryTypeData,
-  //   });
-  //   console.log("Industry Types seeded successfully");
-  // } else {
-  //   console.log("Industry Types already seeded");
-  // }
+  if (crmIndustryType.length === 0) {
+    await prisma.crm_Industry_Type.createMany({
+      data: crmIndustryTypeData,
+    });
+    console.log("Industry Types seeded successfully");
+  } else {
+    console.log("Industry Types already seeded");
+  }
 
-  // //Seed GPT Models
-  // const gptModels = await prisma.gpt_models.findMany();
+  //Seed GPT Models
+  const gptModels = await prisma.gpt_models.findMany();
 
-  // if (gptModels.length === 0) {
-  //   await prisma.gpt_models.createMany({
-  //     data: gptModelsData,
-  //   });
-  //   console.log("GPT Models seeded successfully");
-  // } else {
-  //   console.log("GPT Models already seeded");
-  // }
+  if (gptModels.length === 0) {
+    await prisma.gpt_models.createMany({
+      data: gptModelsData,
+    });
+    console.log("GPT Models seeded successfully");
+  } else {
+    console.log("GPT Models already seeded");
+  }
 
   console.log("-------- Seed DB completed --------");
 }
