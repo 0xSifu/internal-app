@@ -8,63 +8,18 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 // import { DataTableRowActions } from "./data-table-row-actions";
 
 // Assuming you have a type or interface for User
-import { User } from "../data/schema";
+import { Tenant } from "../data/schema";
+import { DataTableRowActions } from "./data-table-row-actions";
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<Tenant>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Id" />
+      <DataTableColumnHeader column={column} title="ID" />
     ),
     cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
     enableSorting: true,
     enableHiding: false,
-  },
-  {
-    accessorKey: "first_name",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="First Name" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[150px]">{row.getValue("first_name")}</div>
-    ),
-    enableSorting: true,
-    enableHiding: true,
-  },
-  {
-    accessorKey: "last_name",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last Name" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[150px]">{row.getValue("last_name")}</div>
-    ),
-    enableSorting: true,
-    enableHiding: true,
-  },
-  {
-    accessorKey: "username",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="User Name" />
-    ),
-    cell: ({ row }) => (
-      <Link href={`/users/${row.original.id}`}>
-        <div className="w-[150px]">{row.getValue("username")}</div>
-      </Link>
-    ),
-    enableSorting: true,
-    enableHiding: true,
-  },
-  {
-    accessorKey: "phone_number",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Phone Number" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[150px]">{row.getValue("phone_number")}</div>
-    ),
-    enableSorting: true,
-    enableHiding: true,
   },
   {
     accessorKey: "email",
@@ -72,29 +27,36 @@ export const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Email" />
     ),
     cell: ({ row }) => (
-      <div className="w-[200px]">{row.getValue("email")}</div>
+      <div className="w-[150px]">{row.getValue("email")}</div>
     ),
     enableSorting: true,
     enableHiding: true,
   },
   {
-    accessorKey: "gender",
+    accessorKey: "subscription_status",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Gender" />
+      <DataTableColumnHeader column={column} title="Subscription Status" />
     ),
-    cell: ({ row }) => (
-      <div className="w-[100px]">{row.getValue("gender")}</div>
-    ),
+    cell: ({ row }) => {
+      const status = row.getValue("subscription_status")
+      return (
+        <div className={`w-[150px]`}>
+          <span className={`${status === 0 ? "bg-green-700 text-green-100 p-2 rounded-md" : "bg-yellow-700 text-yellow-100 p-2 rounded-md"}`}>
+            {status === 0 ? "Active" : status === 1 ? "Expired" : "InActive"}
+          </span>
+        </div>
+      )
+    },
     enableSorting: true,
     enableHiding: true,
   },
   {
-    accessorKey: "address",
+    accessorKey: "plan",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Address" />
+      <DataTableColumnHeader column={column} title="Plan" />
     ),
     cell: ({ row }) => (
-      <div className="w-[300px]">{row.getValue("address")}</div>
+      <div className="w-[150px]">{row.getValue("plan")}</div>
     ),
     enableSorting: true,
     enableHiding: true,
@@ -106,40 +68,40 @@ export const columns: ColumnDef<User>[] = [
     ),
     cell: ({ row }) => (
       <div className="w-[150px]">
-        {moment(row.getValue("registered_on")).format("YY-MM-DD")}
+        {moment(row.getValue("registered_on")).format("YY-MM-DD - HH:mm")}
       </div>
     ),
     enableSorting: true,
     enableHiding: true,
   },
   {
-    accessorKey: "status",
+    accessorKey: "start_date",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[100px]">
-        {row.getValue("status")}
-      </div>
-    ),
-    enableSorting: true,
-    enableHiding: true,
-  },
-  {
-    accessorKey: "subscription_status",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Subscription Status" />
+      <DataTableColumnHeader column={column} title="Start Date" />
     ),
     cell: ({ row }) => (
       <div className="w-[150px]">
-        {row.getValue("subscription_status")}
+        {moment(row.getValue("start_date")).format("YY-MM-DD")}
       </div>
     ),
     enableSorting: true,
     enableHiding: true,
   },
-  // {
-  //   id: "actions",
-  //   cell: ({ row }) => <DataTableRowActions row={row} />,
-  // },
+  {
+    accessorKey: "end_date",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="End Date" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[150px]">
+        {moment(row.getValue("end_date")).format("YY-MM-DD")}
+      </div>
+    ),
+    enableSorting: true,
+    enableHiding: true,
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <DataTableRowActions row={row} />,
+  },
 ];

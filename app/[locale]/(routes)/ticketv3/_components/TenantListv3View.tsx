@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 
 import { getActiveUsers } from "@/actions/get-users";
-import { getBoards } from "@/actions/projects/get-boards";
+import { getBoards, getTenants } from "@/actions/projects/get-boards";
 
 import { authOptions } from "@/lib/auth";
 
@@ -25,13 +25,15 @@ const TenantListv3View = async () => {
   const userId = session.user.id;
 
   const users = await getActiveUsers();
-  const boards: any = await getBoards(userId!);
+  const tenants = await getTenants();
+
+
 
   return (
     <>
       <div className="pt-2 space-y-3">
         <H2Title>Tenant List v3</H2Title>
-        <ProjectsDataTable data={boards} columns={columns} />
+        <ProjectsDataTable data={tenants} columns={columns} />
       </div>
     </>
   );

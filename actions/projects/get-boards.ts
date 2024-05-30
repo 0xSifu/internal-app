@@ -1,30 +1,10 @@
-import { prismadb } from "@/lib/prisma";
+export async function getTenants(): Promise<any> {
+  const res = await fetch('http://localhost:3030/api/tenants')
 
-export const getBoards = async (userId: string) => {
-  if (!userId) {
-    return null;
+  if (!res.ok) {
+    throw new Error('Gagal ndasmu')
   }
-  const data = await prismadb.boards.findMany({
-    where: {
-      OR: [
-        {
-          user: userId,
-        },
-        {
-          visibility: "public",
-        },
-      ],
-    },
-    include: {
-      assigned_user: {
-        select: {
-          name: true,
-        },
-      },
-    },
-    orderBy: {
-      updatedAt: "desc",
-    },
-  });
-  return data;
-};
+  const data = await res.json()
+
+  return data
+}
